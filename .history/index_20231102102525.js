@@ -28,7 +28,7 @@ connection.connect((err) => {
 })
 
 fastify.get('/getPlants/', (request, reply) => {
-    connection.query('SELECT NombreComun, ImagenBase64 FROM Plantas', (error, results) => {
+    connection.query('SELECT * FROM Plantas', (error, results) => {
         if (error) {
           console.error('Error al obtener datos de las plantas:', error);
           reply.code(500).send({ error: 'Error al obtener datos de las plantas' });
@@ -37,19 +37,6 @@ fastify.get('/getPlants/', (request, reply) => {
           reply.send(results);
         }
     });
-});
-
-fastify.get('/getPlant/:id', (request, reply) => {
-  const plantId = request.params.id;
-  connection.query('SELECT * FROM Plantas WHERE ID = ?', [plantId], (error, results) => {
-      if (error) {
-          console.error('Error al obtener datos de la planta:', error);
-          reply.code(500).send({ error: 'Error al obtener datos de la planta' });
-      } else {
-          // Envía los datos de la planta como respuesta
-          reply.send(results);
-      }
-  });
 });
 
 // Arranca el servidor en el puerto 3000

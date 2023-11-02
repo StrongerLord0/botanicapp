@@ -28,7 +28,7 @@ connection.connect((err) => {
 })
 
 fastify.get('/getPlants/', (request, reply) => {
-    connection.query('SELECT NombreComun, ImagenBase64 FROM Plantas', (error, results) => {
+    connection.query('SELECT * FROM Plantas', (error, results) => {
         if (error) {
           console.error('Error al obtener datos de las plantas:', error);
           reply.code(500).send({ error: 'Error al obtener datos de las plantas' });
