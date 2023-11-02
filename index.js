@@ -27,7 +27,7 @@ connection.connect((err) => {
     console.log('Conexión a la base de datos establecida');
 })
 
-fastify.get('/getPlants', (request, reply) => {
+fastify.get('/getPlants/', (request, reply) => {
     connection.query('SELECT * FROM Plantas', (error, results) => {
         if (error) {
           console.error('Error al obtener datos de las plantas:', error);
