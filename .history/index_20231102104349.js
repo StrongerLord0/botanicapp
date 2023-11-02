@@ -7,7 +7,7 @@ const database = process.env.DATABASE;
 const username = process.env.DBUSERNAME;
 const host = process.env.DBHOST;
 const password = process.env.DBPASSWORD;
-const port = process.env.PORT;	
+
 const connection = mysql.createConnection({
     host: host,
     user: username,
@@ -53,7 +53,7 @@ fastify.get('/getPlant/:id', (request, reply) => {
 });
 
 // Arranca el servidor en el puerto 3000
-fastify.listen(port, (err, address) => {
+fastify.listen(8080, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
