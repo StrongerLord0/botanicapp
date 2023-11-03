@@ -32,7 +32,7 @@ connection.connect((err) => {
 });
 
 app.get('/getPlants/', (req, res) => {
-    connection.query('SELECT ID,NombreComun, ImagenBase64 FROM Plantas', (error, results) => {
+    connection.query('SELECT ID,Nombre, ImageBase64 FROM Plantas', (error, results) => {
         if (error) {
             console.error('Error al obtener datos de las plantas:', error);
             res.status(500).send({ error: 'Error al obtener datos de las plantas' });
